@@ -1,6 +1,6 @@
 export default abstract class Race {
-  readonly _name;
-  readonly _dexterity;
+  private _name;
+  private _dexterity;
 
   constructor(name:string, dexterity:number) {
     this._name = name;
