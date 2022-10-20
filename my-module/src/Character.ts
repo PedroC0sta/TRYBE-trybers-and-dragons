@@ -72,6 +72,16 @@ export default class Character implements Fighter {
     this._lifePoints = this._maxLifePoints;
   }
 
+  throwD20():number {
+    this._D20 = getRandomInt(1, 20);
+    return this._D20;
+  }
+  
+  throwD3():number {
+    this._D3 = getRandomInt(1, 3);
+    return this._D3;
+  }
+
   special(enemy:Fighter):void {
     this._D20 = getRandomInt(1, 20);
     this._D3 = getRandomInt(1, 3);
