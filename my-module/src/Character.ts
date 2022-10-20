@@ -13,7 +13,8 @@ export default class Character implements Fighter {
   private _dexterity:number;
   private _energy:Energy;
   private _lifePoints: number;
-  private _D7: number;
+  private _D3: number;
+  private _D20:number;
 
   constructor(name: string) {
     this._dexterity = getRandomInt(1, 10);
@@ -27,7 +28,8 @@ export default class Character implements Fighter {
       type_: this._archetype.energyType,
       amount: getRandomInt(1, 10), 
     };
-    this._D7 = 1;
+    this._D3 = 1;
+    this._D20 = 1;
   }
 
   public get race() { return this._race; }
@@ -67,11 +69,10 @@ export default class Character implements Fighter {
     this._lifePoints = this._maxLifePoints;
   }
 
-  throwD7():void {
-    this._D7 = getRandomInt(1, 7);
-  }
-
   special(enemy:Fighter):void {
-    enemy.receiveDamage(this._strength * this._D7);
+    this._D20 = getRandomInt(1, 20);
+    this._D3 = getRandomInt(1, 3);
+    if (this._D20 === 20) enemy.receiveDamage(this._strength * 7);
+    else { enemy.receiveDamage(this._strength * this._D3); }
   }
 }
